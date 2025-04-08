@@ -1,0 +1,21 @@
+.todo {
+  height: 100dvh;
+}
+
+/*  Background  */
+
+.todo-content-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: hsl(235, 19%, 35%);
+  letter-spacing: 0.3rem;
+  text-transform: capitalize;
+}
+
+/* large screen */
+
+@media screen and (min-width: 768px) {
+  .todo-header {
+    height: 40vh;
+  }
+}
