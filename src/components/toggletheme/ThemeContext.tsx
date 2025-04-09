@@ -10,7 +10,9 @@ type ThemeContextType = {
 };
 
 // Create a context for the theme
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+export const ThemeContext = createContext<ThemeContextType | undefined>(
+  undefined
+);
 
 // Create a provider component
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
