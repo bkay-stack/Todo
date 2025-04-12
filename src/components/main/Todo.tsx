@@ -4,6 +4,8 @@ import { ThemeContext } from "../toggletheme/ThemeContext";
 import lightThemeIcon from "../../assets/images/icon-moon.svg";
 import darkThemeIcon from "../../assets/images/icon-sun.svg";
 
+import Todos from "../addtodos/Todos";
+
 const Todo = () => {
   const useTheme = React.useContext(ThemeContext);
 
@@ -44,9 +46,10 @@ const Todo = () => {
             </div>
           </div>
         </div>
+
+        <Todos />
       </header>
-      <h1 className="me">Me</h1>
-      <h1>Me</h1>
+      {/* Main content area */}
     </main>
   );
 };

@@ -1,6 +1,7 @@
 .todo {
   height: 100dvh;
   transition: all 0.3s ease-in-out;
+  position: relative;
 }
 
 .todo-header {
@@ -28,27 +29,32 @@
   margin: 0 auto;
 
   height: 20vh;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .title-wrapper {
   display: flex;
   justify-content: space-between;
-  /* align-items: center; */
+  align-items: center;
   gap: 15rem;
 
   margin-bottom: 6rem;
   transition: all 0.3s ease-in-out;
+
+  /* outline: 1px solid red; */
 }
 
 /* Header title */
 .todo-title-header {
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-size: clamp(1.9rem, 4vw, 3rem);
   font-weight: 700;
   letter-spacing: 0.3rem;
   text-transform: capitalize;
   transition: all 0.3s ease-in-out;
   color: #fff;
+
+  display: flex;
+  align-items: center;
 }
 
 /*  Background  */
@@ -60,14 +66,6 @@
   transition: all 0.3s ease-in-out;
 }
 
-.me {
-  color: var(--second-primary);
-  font-size: 5rem;
-  font-weight: 700;
-  text-transform: capitalize;
-  letter-spacing: 0.3rem;
-  text-align: center;
-}
 /* large screen */
 
 @media screen and (min-width: 768px) {
@@ -75,8 +73,6 @@
     background: url("../../assets/images/bg-desktop-light.jpg");
     background-size: cover;
     background-position: center;
-    padding: 1rem;
-    cursor: pointer;
 
     /* Transition */
     transition: all 0.3s ease-in-out;
