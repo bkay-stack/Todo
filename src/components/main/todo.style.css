@@ -2,6 +2,10 @@
   height: 100dvh;
   transition: all 0.3s ease-in-out;
   position: relative;
+  display: flex;
+  flex-direction: column;
+
+  outline: 1px solid red;
 }
 
 .todo-header {
@@ -11,7 +15,7 @@
   padding: 1rem;
   cursor: pointer;
 
-  /* Transition */
+  /*  outline: 1px solid red; Transition */
   transition: all 0.3s ease-in-out;
 }
 
@@ -27,8 +31,8 @@
   align-items: center;
   max-width: 600px;
   margin: 0 auto;
-
-  height: 20vh;
+  flex-direction: column;
+  height: 30vh;
   /* overflow: hidden; */
 }
 
@@ -36,9 +40,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 15rem;
-
-  margin-bottom: 6rem;
+  gap: 13rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   transition: all 0.3s ease-in-out;
 
   /* outline: 1px solid red; */
@@ -69,6 +73,14 @@
 /* large screen */
 
 @media screen and (min-width: 768px) {
+  .todo {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 1400px;
+  }
   .todo-header {
     background: url("../../assets/images/bg-desktop-light.jpg");
     background-size: cover;

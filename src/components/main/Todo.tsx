@@ -24,30 +24,33 @@ const Todo = () => {
         <div className={`todo-header-container ${theme}`}>
           <div className="title-wrapper">
             <div className="todo-title">
-              <h1 className="todo-title-header">Todo</h1>
+              <h1 className="todo-title-header">TODO</h1>
             </div>
             {/* Toggle theme button */}
-            <div className="theme-toggle">
-              {theme === "dark" ? (
-                <img
-                  src={darkThemeIcon}
-                  alt="Dark Theme"
-                  className="theme-icon"
-                  onClick={toggleTheme}
-                />
-              ) : (
-                <img
-                  src={lightThemeIcon}
-                  alt="Light Theme"
-                  className="theme-icon"
-                  onClick={toggleTheme}
-                />
-              )}
-            </div>
+            <>
+              <div className="theme-toggle">
+                {theme === "dark" ? (
+                  <img
+                    src={darkThemeIcon}
+                    alt="Dark Theme"
+                    className="theme-icon"
+                    onClick={toggleTheme}
+                  />
+                ) : (
+                  <img
+                    src={lightThemeIcon}
+                    alt="Light Theme"
+                    className="theme-icon"
+                    onClick={toggleTheme}
+                  />
+                )}
+              </div>
+            </>
           </div>
-        </div>
 
-        <Todos />
+          <Todos />
+        </div>
+        {/* <Todos /> */}
       </header>
       {/* Main content area */}
     </main>
