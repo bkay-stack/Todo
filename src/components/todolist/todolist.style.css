@@ -8,10 +8,5 @@
   text-align: left;
   max-width: 535px;
   background-color: var(--bg-color);
-  margin-top: 2rem;
-}
-
-.todo-list .text {
-  text-align: left;
-  width: 100%;
+  margin-top: 1rem;
 }

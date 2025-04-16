@@ -19,24 +19,29 @@ const Todos = () => {
     // Clear the input field after adding
   };
 
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault(); // Prevent the default form submission
+    addTodo(); // Call the addTodo function
+  };
   return (
     <div className="todos">
       {/* Todo input field */}
-      <input
-        id="todo-input"
-        type="text"
-        placeholder="Create a new todo..."
-        className="todo-input-field"
-        onChange={handleInputChange}
-        value={inputValue}
-      />
-      {/* Add button */}
-      <button onClick={addTodo} className="todo-add-button"></button>
 
+      <form className="input" onSubmit={handleSubmit}>
+        {/* Add button */}
+        <span className="todo-add-button"></span>
+        {/* Input field */}
+        <input
+          id="todo-input"
+          type="text"
+          placeholder="Create a new todo..."
+          className="todo-input-field"
+          onChange={handleInputChange}
+          value={inputValue}
+        />
+      </form>
       {/* Todo list */}
       <TodoList todos={todos} />
-
-      {/* Todo list */}
     </div>
   );
 };

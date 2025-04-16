@@ -36,8 +36,8 @@ img {
 
 :root {
   /* Light Theme */
-  --bg-color: hsl(0, 0%, 98%);
-  --bg-secondary: hsl(236, 33%, 92%);
+  --bg-color: hsl(236, 33%, 92%);
+  --bg-secondary: hsl(0, 0%, 98%);
   --border-color: hsl(233, 11%, 84%);
   --text-primary: hsl(235, 19%, 35%);
   --text-secondary: hsl(236, 9%, 61%);

@@ -47,12 +47,11 @@ const Todo = () => {
               </div>
             </>
           </div>
-
-          <Todos />
         </div>
-        {/* <Todos /> */}
+        <Todos />
       </header>
       {/* Main content area */}
+      {/* <Todos /> */}
     </main>
   );
 };
