@@ -6,16 +6,24 @@ const TodoList = ({ todos }: { todos: string[] }) => {
   return (
     <div className="todo-list-item">
       {todos.map((todo, index) => (
-        <div className="todo-list-items" key={index}>
-          <span className="span-btn">
+        <>
+          <div className="todo-list-items" key={index}>
+            {/* <span className="span-btn"> */}
             <img src={checkIcon} alt="" />
-          </span>
-          <p>{todo}</p>
-          <div className="delete-icon">
-            <img src={deleteIcon} alt="" />
+            {/* </span> */}
+            <p>{todo}</p>
+            <div className="delete-icon">
+              <img src={deleteIcon} alt="" />
+            </div>
           </div>
-        </div>
+        </>
       ))}
+
+      <>
+        {todos.length > 0 && (
+          <div className="manager-list-items"> {todos.length} items left</div>
+        )}
+      </>
     </div>
   );
 };
