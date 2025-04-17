@@ -1,12 +1,16 @@
-.todo-list {
+.todo-list-item {
+  background-color: var(--bg-secondary);
+  margin-top: 1rem;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: left;
+  border-radius: 3px;
+}
+
+.todo-list-items {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  width: 100%;
-  /* position: relative; */
-  text-align: left;
-  max-width: 535px;
-  background-color: var(--bg-color);
-  margin-top: 1rem;
+  padding: 1rem;
+  border-bottom: 0.01rem solid var(--text-secondary);
 }
