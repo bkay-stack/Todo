@@ -27,7 +27,7 @@
   border-bottom: 0.01rem solid var(--text-secondary);
 }
 
-.manager-list-items {
+.manager-list-items-mobile {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -36,7 +36,11 @@
   color: var(--text-secondary);
 }
 
-.filter {
+.manager-list-items-desktop {
+  display: none;
+}
+
+.filter-mobile {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,6 +54,8 @@
   color: var(--text-primary);
   font-weight: 600;
   border-radius: 5px;
+
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
 .filter-wide-screen {
@@ -69,5 +75,30 @@
   .desktop {
     display: block;
     display: flex;
+  }
+
+  .filter-mobile {
+    display: none;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .manager-list-items-mobile {
+    display: none;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .manager-list-items-desktop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 0.01rem solid var(--text-secondary);
+    color: var(--text-secondary);
+  }
+
+  .filter-desktop {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
   }
 }

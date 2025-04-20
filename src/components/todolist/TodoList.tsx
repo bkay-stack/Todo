@@ -22,7 +22,7 @@ const TodoList = ({ todos }: { todos: string[] }) => {
 
         <>
           {todos.length > 0 && (
-            <div className="manager-list-items">
+            <div className="manager-list-items-mobile">
               <p>{todos.length} items left</p>
 
               <div className="clear-completed">
@@ -32,19 +32,27 @@ const TodoList = ({ todos }: { todos: string[] }) => {
           )}
 
           {todos.length > 0 && (
-            <div className="manager-list-items desktop">
+            <div className="manager-list-items-desktop">
               <p>{todos.length} items left</p>
-              <div className="filter-wide-screen"></div>
-              <div className="clear-completed">
-                <p>Clear completed</p>
+              <div className="filter-desktop">
+                <div className="filter-items">
+                  <p>All</p>
+                </div>
+                <div className="filter-items">
+                  <p>Active</p>
+                </div>
+                <div className="filter-items">
+                  <p>Completed</p>
+                </div>
               </div>
+              <p>Clear completed</p>
             </div>
           )}
         </>
       </div>
       <>
         {todos.length > 0 && (
-          <div className="filter">
+          <div className="filter-mobile">
             <div className="filter-items">
               <p>All</p>
             </div>
