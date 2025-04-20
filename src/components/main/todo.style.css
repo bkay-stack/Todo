@@ -23,6 +23,7 @@
   background: url("../../assets/images/bg-mobile-dark.jpg");
   background-size: cover;
   background-position: center;
+  transition: all 0.3s ease-in-out;
 }
 
 .todo-header-container {
@@ -32,7 +33,7 @@
   max-width: 600px;
   margin: 0 auto;
   flex-direction: column;
-  height: 25vh;
+  height: 33vh;
   /* overflow: hidden; */
 }
 
@@ -41,8 +42,8 @@
   justify-content: space-between;
   align-items: center;
   gap: 13rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  /* margin-top: 2rem; */
+  margin-bottom: 5rem;
   transition: all 0.3s ease-in-out;
 
   /* outline: 1px solid red; */
@@ -52,7 +53,7 @@
 .todo-title-header {
   font-size: clamp(1.9rem, 4vw, 3rem);
   font-weight: 700;
-  letter-spacing: 0.3rem;
+  letter-spacing: 0.5rem;
   text-transform: capitalize;
   transition: all 0.3s ease-in-out;
   color: #fff;

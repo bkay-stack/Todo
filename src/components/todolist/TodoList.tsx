@@ -4,24 +4,57 @@ import checkIcon from "../../assets/images/icon-check.svg";
 import deleteIcon from "../../assets/images/icon-cross.svg";
 const TodoList = ({ todos }: { todos: string[] }) => {
   return (
-    <div className="todo-list-item">
-      {todos.map((todo, index) => (
-        <>
-          <div className="todo-list-items" key={index}>
-            {/* <span className="span-btn"> */}
-            <img src={checkIcon} alt="" />
-            {/* </span> */}
-            <p>{todo}</p>
-            <div className="delete-icon">
-              <img src={deleteIcon} alt="" />
+    <div className="todo-wrapper">
+      <div className="todo-list-item">
+        {todos.map((todo, index) => (
+          <>
+            <div className="todo-list-items" key={index}>
+              {/* <span className="span-btn"> */}
+              <img src={checkIcon} alt="" />
+              {/* </span> */}
+              <p>{todo}</p>
+              <div className="delete-icon">
+                <img src={deleteIcon} alt="" />
+              </div>
             </div>
-          </div>
-        </>
-      ))}
+          </>
+        ))}
 
+        <>
+          {todos.length > 0 && (
+            <div className="manager-list-items">
+              <p>{todos.length} items left</p>
+
+              <div className="clear-completed">
+                <p>Clear completed</p>
+              </div>
+            </div>
+          )}
+
+          {todos.length > 0 && (
+            <div className="manager-list-items desktop">
+              <p>{todos.length} items left</p>
+              <div className="filter-wide-screen"></div>
+              <div className="clear-completed">
+                <p>Clear completed</p>
+              </div>
+            </div>
+          )}
+        </>
+      </div>
       <>
         {todos.length > 0 && (
-          <div className="manager-list-items"> {todos.length} items left</div>
+          <div className="filter">
+            <div className="filter-items">
+              <p>All</p>
+            </div>
+            <div className="filter-items">
+              <p>Active</p>
+            </div>
+            <div className="filter-items">
+              <p>Completed</p>
+            </div>
+          </div>
         )}
       </>
     </div>
