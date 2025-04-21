@@ -9,10 +9,16 @@ const TodoList = ({ todos }: { todos: string[] }) => {
         {todos.map((todo, index) => (
           <>
             <div className="todo-list-items" key={index}>
-              {/* <span className="span-btn"> */}
-              <img src={checkIcon} alt="" />
-              {/* </span> */}
-              <p>{todo}</p>
+              <div className="todo-task">
+                <input
+                  type="checkbox"
+                  name="checker"
+                  id=""
+                  className="checkers"
+                />
+
+                <p>{todo}</p>
+              </div>
               <div className="delete-icon">
                 <img src={deleteIcon} alt="" />
               </div>
