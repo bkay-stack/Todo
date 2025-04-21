@@ -1,29 +1,49 @@
 import React from "react";
 import "./todolist.style.css";
-import checkIcon from "../../assets/images/icon-check.svg";
 import deleteIcon from "../../assets/images/icon-cross.svg";
-const TodoList = ({ todos }: { todos: string[] }) => {
+
+// Todo Type
+type Todo = {
+  id: number;
+  text: string;
+};
+
+type TodoListProps = {
+  todos: Todo[];
+  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
+};
+
+const TodoList = ({ todos, setTodos }: TodoListProps) => {
+  console.log(todos);
+
+  // Delete function
+
+  const deleteTodo = (id: number) => {
+    const updatedTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(updatedTodos);
+    console.log("clicked");
+  };
+
   return (
     <div className="todo-wrapper">
       <div className="todo-list-item">
-        {todos.map((todo, index) => (
-          <>
-            <div className="todo-list-items" key={index}>
+        {todos.map((todo) => (
+          <div key={todo.id}>
+            <div className="todo-list-items">
               <div className="todo-task">
-                <input
-                  type="checkbox"
-                  name="checker"
-                  id=""
-                  className="checkers"
-                />
-
-                <p>{todo}</p>
+                <input type="checkbox" name="checker" className="checkers" />
+                <p>{todo.text}</p>
               </div>
               <div className="delete-icon">
-                <img src={deleteIcon} alt="" />
+                <img
+                  src={deleteIcon}
+                  alt="Delete"
+                  role="button"
+                  onClick={() => deleteTodo(todo.id)}
+                />
               </div>
             </div>
-          </>
+          </div>
         ))}
 
         <>

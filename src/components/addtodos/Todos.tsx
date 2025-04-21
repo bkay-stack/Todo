@@ -3,7 +3,13 @@ import "./todos.style.css";
 import { useState } from "react";
 import TodoList from "../todolist/TodoList";
 const Todos = () => {
-  const [todos, setTodos] = useState<string[]>([]);
+  // Todo Type
+  type Todo = {
+    id: number;
+    text: string;
+  };
+
+  const [todos, setTodos] = useState<Todo[]>([]);
   const [inputValue, setInputValue] = useState<string>("");
 
   // Function to handle input change
@@ -13,10 +19,17 @@ const Todos = () => {
 
   // Function to add a new todo
   const addTodo = () => {
-    console.log("Adding todo:", inputValue, todos);
-    setTodos([...todos, inputValue]); // Add the new todo to the list
+    // Step 1: Guard clause to ensure the input isn't empty or just spaces
+    if (!inputValue.trim()) return; // Stops execution if the input is blank
+
+    const newTodo: Todo = {
+      id: Date.now(),
+      text: inputValue,
+    };
+
+    setTodos([...todos, newTodo]);
+
     setInputValue("");
-    // Clear the input field after adding
   };
 
   const handleSubmit = (event: React.FormEvent) => {
@@ -41,7 +54,7 @@ const Todos = () => {
         />
       </form>
       {/* Todo list */}
-      <TodoList todos={todos} />
+      <TodoList todos={todos} setTodos={setTodos} />
     </div>
   );
 };
