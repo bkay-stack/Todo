@@ -24,6 +24,11 @@ const TodoList = ({ todos, setTodos }: TodoListProps) => {
     console.log("clicked");
   };
 
+  // Clear function
+  const clearTodos = () => {
+    setTodos([]);
+  };
+
   return (
     <div className="todo-wrapper">
       <div className="todo-list-item">
@@ -52,7 +57,7 @@ const TodoList = ({ todos, setTodos }: TodoListProps) => {
               <p>{todos.length} items left</p>
 
               <div className="clear-completed">
-                <p>Clear completed</p>
+                <p onClick={() => clearTodos()}>Clear completed</p>
               </div>
             </div>
           )}
