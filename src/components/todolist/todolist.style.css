@@ -65,6 +65,11 @@
   transition: all 0.3s ease;
 }
 
+.strike-through {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
 .manager-list-items-mobile {
   display: flex;
   justify-content: space-between;
