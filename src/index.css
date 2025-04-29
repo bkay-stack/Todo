@@ -35,16 +35,20 @@ img {
 }
 
 :root {
-  /* Light Theme */
+  --accent-color: hsl(220, 98%, 61%);
+  --check-bg: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+
+  /* Light Theme Colors */
   --bg-color: hsl(236, 33%, 92%);
   --bg-secondary: hsl(0, 0%, 98%);
   --border-color: hsl(233, 11%, 84%);
   --text-primary: hsl(235, 19%, 35%);
   --text-secondary: hsl(236, 9%, 61%);
+  --hover-color: hsl(236, 33%, 92%);
 }
 
 [data-theme="dark"] {
-  /* Dark Theme */
+  /* Dark Theme Overrides */
   --bg-color: hsl(235, 21%, 11%);
   --bg-secondary: hsl(235, 24%, 19%);
   --border-color: hsl(233, 14%, 35%);

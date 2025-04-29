@@ -1,4 +1,5 @@
 import React from "react";
+
 import "./todolist.style.css";
 import deleteIcon from "../../assets/images/icon-cross.svg";
 
@@ -7,14 +8,24 @@ type Todo = {
   id: number;
   text: string;
   completed: boolean;
+  status: string;
 };
 
+// Todo List Props
 type TodoListProps = {
   todos: Todo[];
   setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
 };
 
 const TodoList = ({ todos, setTodos }: TodoListProps) => {
+  const [filterStatus, setFilterStatus] = React.useState<string>(() => {
+    const stored = localStorage.getItem("filterStatus");
+    return stored ? JSON.parse(stored) : "all";
+  });
+
+  React.useEffect(() => {
+    localStorage.setItem("filterStatus", JSON.stringify(filterStatus));
+  }, [filterStatus]);
   console.log(todos);
 
   // completed Todos function
@@ -25,9 +36,20 @@ const TodoList = ({ todos, setTodos }: TodoListProps) => {
 
     // Update the completed status of the todo
     const updatedTodos = todos.map((todo) =>
-      todo.id === id ? { ...todo, completed: isChecked } : todo
+      todo.id === id
+        ? {
+            ...todo,
+            completed: isChecked,
+            // status: isChecked ? "active" : "completed",
+          }
+        : todo
     );
     setTodos(updatedTodos);
+  };
+
+  // Get active todos function
+  const getActiveTodos = () => {
+    return todos.filter((todo) => !todo.completed).length;
   };
 
   // Delete function
@@ -39,13 +61,28 @@ const TodoList = ({ todos, setTodos }: TodoListProps) => {
 
   // Clear function
   const clearTodos = () => {
-    setTodos([]);
+    const activeTodos = todos.filter((todo) => !todo.completed);
+    setTodos(activeTodos);
+  };
+
+  // Filter function
+
+  const filteredArrays = () => {
+    switch (filterStatus) {
+      case "active":
+        return todos.filter((todo) => !todo.completed);
+
+      case "completed":
+        return todos.filter((todo) => todo.completed);
+      default:
+        return todos;
+    }
   };
 
   return (
     <div className="todo-wrapper">
       <div className="todo-list-item">
-        {todos.map((todo) => (
+        {filteredArrays().map((todo) => (
           <div key={todo.id}>
             <div className="todo-list-items">
               <div className="todo-task">
@@ -76,8 +113,7 @@ const TodoList = ({ todos, setTodos }: TodoListProps) => {
         <>
           {todos.length > 0 && (
             <div className="manager-list-items-mobile">
-              <p>{todos.length} items left</p>
-
+              <p>{getActiveTodos()} items left</p>
               <div className="clear-completed">
                 <p onClick={() => clearTodos()}>Clear completed</p>
               </div>
@@ -86,19 +122,19 @@ const TodoList = ({ todos, setTodos }: TodoListProps) => {
 
           {todos.length > 0 && (
             <div className="manager-list-items-desktop">
-              <p>{todos.length} items left</p>
+              <p>{getActiveTodos()} items left</p>
               <div className="filter-desktop">
                 <div className="filter-items">
-                  <p>All</p>
+                  <p onClick={() => setFilterStatus("all")}>All</p>
                 </div>
                 <div className="filter-items">
-                  <p>Active</p>
+                  <p onClick={() => setFilterStatus("active")}> Active </p>
                 </div>
                 <div className="filter-items">
-                  <p>Completed</p>
+                  <p onClick={() => setFilterStatus("completed")}>Completed</p>
                 </div>
               </div>
-              <p>Clear completed</p>
+              <p onClick={() => clearTodos()}>Clear completed</p>
             </div>
           )}
         </>
@@ -107,13 +143,13 @@ const TodoList = ({ todos, setTodos }: TodoListProps) => {
         {todos.length > 0 && (
           <div className="filter-mobile">
             <div className="filter-items">
-              <p>All</p>
+              <p onClick={() => setFilterStatus("all")}>All</p>
             </div>
             <div className="filter-items">
-              <p>Active</p>
+              <p onClick={() => setFilterStatus("active")}>Active</p>
             </div>
             <div className="filter-items">
-              <p>Completed</p>
+              <p onClick={() => setFilterStatus("completed")}>Completed</p>
             </div>
           </div>
         )}

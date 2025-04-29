@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect, ReactNode } from "react";
+import { createContext, useState, useEffect } from "react";
 
 // Define the type for the theme
 type Theme = "light" | "dark";
@@ -23,8 +23,26 @@ type ThemeProviderProps = {
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const [theme, setTheme] = useState<Theme>("light");
 
+  // Set the theme based on the user's preference
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
+
+  // Set the initial theme based on local storage or default to light
+
+  useEffect(() => {
+    const getStoredTheme = localStorage.getItem("theme") as Theme;
+    if (getStoredTheme) {
+      setTheme(getStoredTheme);
+      document.documentElement.setAttribute("data-theme", getStoredTheme);
+    } else {
+      setTheme("light");
+      document.documentElement.setAttribute("data-theme", "light");
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   // Function to toggle the theme

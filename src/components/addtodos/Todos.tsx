@@ -1,15 +1,26 @@
 import React from "react";
 import "./todos.style.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TodoList from "../todolist/TodoList";
-const Todos = () => {
-  // Todo Type
-  type Todo = {
-    id: number;
-    text: string;
-  };
 
-  const [todos, setTodos] = useState<Todo[]>([]);
+// Todo Type
+type Todo = {
+  id: number;
+  text: string;
+  completed: boolean;
+  status: string;
+};
+const Todos = () => {
+  // State to manage todos and input value
+  const [todos, setTodos] = useState<Todo[]>(() => {
+    const stored = localStorage.getItem("todos");
+    return stored ? JSON.parse(stored) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
   const [inputValue, setInputValue] = useState<string>("");
 
   // Function to handle input change
@@ -25,6 +36,8 @@ const Todos = () => {
     const newTodo: Todo = {
       id: Date.now(),
       text: inputValue,
+      completed: false,
+      status: "All",
     };
 
     setTodos([...todos, newTodo]);

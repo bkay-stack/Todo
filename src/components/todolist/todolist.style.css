@@ -34,6 +34,8 @@
   gap: 1rem;
 }
 
+/* Checker */
+
 .checkers {
   appearance: none;
   -webkit-appearance: none;
@@ -65,9 +67,12 @@
   transition: all 0.3s ease;
 }
 
+/* Delete icon */
+
 .strike-through {
   text-decoration: line-through;
   opacity: 0.6;
+  color: var(--text-secondary);
 }
 
 .manager-list-items-mobile {
@@ -77,6 +82,7 @@
   padding: 1rem;
   border-bottom: 0.01rem solid var(--text-secondary);
   color: var(--text-secondary);
+  cursor: pointer;
 }
 
 .manager-list-items-desktop {
@@ -99,6 +105,15 @@
   border-radius: 5px;
 
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.manager-list-items-desktop p {
+  cursor: pointer;
+}
+
+.filter-items p:hover {
+  color: var(--accent-color);
+  cursor: pointer;
 }
 
 .filter-wide-screen {
@@ -127,7 +142,7 @@
     cursor: pointer;
     position: relative;
     transition: all 0.3s ease;
-    left: 0.9rem;
+    /* left: 0.9rem; */
   }
 
   .checkers:checked::after {
