@@ -1,5 +1,4 @@
 import React from "react";
-
 import "./todolist.style.css";
 import deleteIcon from "../../assets/images/icon-cross.svg";
 

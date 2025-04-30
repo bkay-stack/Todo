@@ -15,6 +15,11 @@ const Todo = () => {
 
   const { theme, toggleTheme } = useTheme;
 
+  React.useEffect(() => {
+    localStorage.setItem("theme", theme);
+    console.log("Theme changed to:", theme);
+  }, [theme]);
+
   return (
     // Main component for the Todo application
     <main>

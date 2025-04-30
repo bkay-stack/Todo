@@ -21,27 +21,16 @@ type ThemeProviderProps = {
 
 // Create a provider component
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>(() => {
+    // Get the theme from local storage or default to light
+    const stored = localStorage.getItem("theme") as Theme;
+    return stored ?? "light";
+  });
 
   // Set the theme based on the user's preference
+
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
-  }, [theme]);
-
-  // Set the initial theme based on local storage or default to light
-
-  useEffect(() => {
-    const getStoredTheme = localStorage.getItem("theme") as Theme;
-    if (getStoredTheme) {
-      setTheme(getStoredTheme);
-      document.documentElement.setAttribute("data-theme", getStoredTheme);
-    } else {
-      setTheme("light");
-      document.documentElement.setAttribute("data-theme", "light");
-    }
-  }, []);
-
-  useEffect(() => {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
